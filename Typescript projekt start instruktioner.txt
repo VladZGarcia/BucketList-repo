@@ -1,0 +1,20 @@
+Typescript
+
+1. Node.js o npm installerade. (node -v och npm -v)
+
+2. Skapa projektmapp
+
+3. Initiera projekt. (npm init -y)
+
+4. Installera typescript. (npm install typescript --save-dev)
+
+5. Initiera typescript-konfigurationen (npx tsc --init)
+
+... Eller hoppa över steg 1 - 5 och använd boilerplate. (ts-boilerplate-main)
+
+https://github.com/Lexicon-frontend-2025/ts-boilerplate
+
+6. Översätta till JS när du startat up projektet. (npx tsc -w)
+
+
+starta upp liveserver med Alt-l och Alt-o
