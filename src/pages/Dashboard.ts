@@ -1,16 +1,44 @@
+import { Dream } from '../models/Dream';
+import { displayUsername } from '../utils/displayUserName.js';
 
+displayUsername();
 
-// Hämtar referenser från HTML
-const userNameSpan = document.getElementById('user-name') as HTMLSpanElement;
+function renderDreams(): void {
+    const bucketList: Dream[] = JSON.parse(localStorage.getItem('bucketList') || '[]');
+  const dreamList = document.querySelector('.dream-list') as HTMLUListElement;
+  dreamList.innerHTML = ''; // Clear existing items
 
-// Hämtar användarnamn från localStorage
-const userData = localStorage.getItem('user');
-if (userData) {
-  const user = JSON.parse(userData);
-  // Kapitalisera första bokstaven i användarnamnet
-  const capitalizedUsername = user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase();
-  userNameSpan.textContent = capitalizedUsername;
-} else {
-  // om ingen användare är inloggad, omdirigera till login
-  window.location.href = 'login.html';
+  bucketList.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.className = 'dream-list_item';
+
+    li.innerHTML = `
+      <input
+        class="dream-check"
+        type="checkbox"
+        name="dream-check"
+        id="dream-check-${item.id}"
+        ${item.checked ? 'checked' : ''}
+      />
+      <label for="dream-check-${item.id}">
+        ${item.dream},
+        <span class="dream-theme">${item.theme}</span>
+      </label>
+      <button type="button" class="delete-btn" data-id="${item.id}">
+        <img src="../assets/images/trash_delete.png" />
+      </button>
+    `;
+
+    // Add event listener for delete button
+    li.querySelector('.delete-btn')?.addEventListener('click', () => {
+      // Remove the item from the array
+      const updatedList = bucketList.filter(dream => dream.id !== item.id);
+      localStorage.setItem('bucketList', JSON.stringify(updatedList));
+      renderDreams(); // Re-render the list
+    });
+
+    dreamList.appendChild(li);
+  });
 }
+
+renderDreams();
