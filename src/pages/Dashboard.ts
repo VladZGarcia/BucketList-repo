@@ -1,3 +1,10 @@
+interface bucketListItem {
+    id: number;
+    title: string;
+    description: string;
+    completed: boolean;
+    }
+
 // Hämtar referenser från HTML
 const userNameSpan = document.getElementById('user-name') as HTMLSpanElement;
 

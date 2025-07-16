@@ -1,3 +1,5 @@
+import { showFieldError, showToast } from '../utils/userInteraction';
+
 const loginForm = document.querySelector<HTMLFormElement>('form') as HTMLFormElement;
 const userNameInput = document.getElementById('username') as HTMLInputElement;
 const passwordInput = document.getElementById('password') as HTMLInputElement;
@@ -56,28 +58,4 @@ if (rememberMeCheckbox.checked) {
 
 loginForm.addEventListener('submit', handleLogin);
 
-function showFieldError(fieldId: string, message: string) {
-  const errorElement = document.getElementById(`${fieldId}-error-message`);
-  if (errorElement) {
-    errorElement.textContent = message;
-    errorElement.style.display = 'block';
-  }
-}
 
-function hideFieldError(fieldId: string) {
-  const errorElement = document.getElementById(`${fieldId}-error-message`);
-  if (errorElement) {
-    errorElement.style.display = 'none';
-  }
-}
-
-function showToast(message: string, type: 'success' | 'error' = 'success') {
-  const toast = document.createElement('div');
-  toast.className = `toast ${type}`;
-  toast.textContent = message;
-  document.body.appendChild(toast);
-  
-  setTimeout(() => {
-    toast.remove();
-  }, 10000);
-}
