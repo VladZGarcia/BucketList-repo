@@ -1,4 +1,4 @@
-import { showFieldError, showToast } from '../utils/userInteraction';
+import { showFieldError, showToast } from '../utils/userInteraction.js';
 
 const loginForm = document.querySelector<HTMLFormElement>('form') as HTMLFormElement;
 const userNameInput = document.getElementById('username') as HTMLInputElement;

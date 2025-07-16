@@ -1,6 +1,6 @@
 export interface Dream {
     id: number,
-    name: string,
+    dream: string,
     theme: string,
     checked: boolean
 }
