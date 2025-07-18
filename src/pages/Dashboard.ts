@@ -29,9 +29,9 @@ function renderDreams(): void {
       </button>
     `;
 
-    // Add event listener for delete button
+    // Event listener för delete button
     li.querySelector('.delete-btn')?.addEventListener('click', () => {
-      // Remove the item from the array
+      // Ta bort item från bucketList
       const updatedList = bucketList.filter(dream => dream.id !== item.id);
       localStorage.setItem('bucketList', JSON.stringify(updatedList));
       renderDreams(); // Re-render the list

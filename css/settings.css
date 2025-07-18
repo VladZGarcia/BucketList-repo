@@ -18,6 +18,20 @@
      margin-bottom: 0.5rem;
  }
 
+ .theme-list_item>* {
+     align-self: start;
+ }
+
+ .theme-list_item button {
+    background-color: transparent;
+     display: grid;
+     transition: all 0.3s ease;
+     cursor: pointer;
+     margin-bottom: 0.5rem;
+     border: none;
+     padding-right: 0;
+ }
+
  li p {
      color: var(--text-color);
  }
