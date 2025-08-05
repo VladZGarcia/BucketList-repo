@@ -17,6 +17,22 @@ function handleAddDream(event: Event): void {
     event.preventDefault();
 
     const dream = dreamInput.value.trim();
+    // Ladda teman från localStorage
+    let themes: string[] = ['default'];
+    const storedThemes = localStorage.getItem('themes');
+    if (storedThemes) {
+        themes = JSON.parse(storedThemes);
+    }
+
+    // Rendera teman i select
+    themeSelect.innerHTML = '';
+    themes.forEach(theme => {
+        const option = document.createElement('option');
+        option.value = theme;
+        option.text = theme;
+        themeSelect.appendChild(option);
+    });
+
     const theme = themeSelect.options[themeSelect.selectedIndex]?.text.trim() || 'default';
 
     // Validera
@@ -50,6 +66,8 @@ function handleAddDream(event: Event): void {
     
     // Rensa formuläret
     addDreamForm.reset();
+
+    window.location.href = 'dashboard.html'; 
 }
 
 addDreamForm.addEventListener('submit', handleAddDream);
